@@ -1,0 +1,985 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maria Amor Iglesia | General Virtual Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F7F5F0;
+      --white: #FFFFFF;
+      --ink: #1C1C22;
+      --ink-mid: #4A4A55;
+      --ink-soft: #8A8A96;
+      --rule: #E4E2DC;
+      --accent: #2B4C7E;
+      --accent-light: #EEF2F8;
+      --tag-bg: #F0EDE8;
+
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+
+      --space-4: 4px;
+      --space-8: 8px;
+      --space-16: 16px;
+      --space-24: 24px;
+      --space-32: 32px;
+      --space-48: 48px;
+      --space-64: 64px;
+      --space-96: 96px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(247,245,240,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 var(--space-24);
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 17px;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    .nav-links {
+      display: flex;
+      gap: var(--space-32);
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-mid);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--white) !important;
+      background: var(--ink);
+      padding: 8px 20px;
+      border-radius: 100px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--accent) !important; }
+    .nav-mobile-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: var(--space-8);
+    }
+    #mobile-menu {
+      display: none;
+      padding: var(--space-16) var(--space-24) var(--space-24);
+      border-top: 1px solid var(--rule);
+      flex-direction: column;
+      gap: var(--space-16);
+    }
+    #mobile-menu a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink-mid);
+      text-decoration: none;
+    }
+    @media (max-width: 680px) {
+      .nav-links { display: none; }
+      .nav-mobile-btn { display: block; }
+      #mobile-menu.open { display: flex; }
+    }
+
+    /* ── LAYOUT ── */
+    .section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: var(--space-96) var(--space-24);
+    }
+    .section + .section { padding-top: 0; }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--rule);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* ── TYPOGRAPHY ── */
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: var(--space-16);
+    }
+    h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
+    h1 { font-size: clamp(36px, 5vw, 52px); font-weight: 600; color: var(--ink); }
+    h2 { font-size: 30px; font-weight: 600; color: var(--ink); }
+    h3 { font-size: 20px; font-weight: 400; color: var(--ink); }
+    p { color: var(--ink-mid); }
+    a { color: var(--accent); }
+
+    /* ── TAGS ── */
+    .tag {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--ink-mid);
+      background: var(--tag-bg);
+      border: 1px solid var(--rule);
+      border-radius: 100px;
+      padding: 4px 14px;
+    }
+    .tag-group { display: flex; flex-wrap: wrap; gap: var(--space-8); }
+
+    /* ── HERO ── */
+    #hero {
+      padding-top: calc(var(--space-96) + 60px);
+      padding-bottom: var(--space-96);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: var(--space-64);
+      align-items: center;
+    }
+    .hero-text h1 { margin-bottom: var(--space-16); }
+    .hero-text .lead {
+      font-size: 18px;
+      color: var(--ink-mid);
+      max-width: 480px;
+      margin-bottom: var(--space-32);
+    }
+    .hero-actions { display: flex; gap: var(--space-16); flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 12px 28px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--accent); color: var(--white); }
+    .btn-ghost {
+      display: inline-block;
+      border: 1px solid var(--rule);
+      color: var(--ink-mid);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 12px 28px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--ink-mid); color: var(--ink); }
+    .hero-photo {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: var(--space-16);
+      border: 1px solid var(--rule);
+      filter: grayscale(15%);
+    }
+    @media (max-width: 700px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-photo { max-width: 180px; border-radius: 50%; }
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: var(--space-16);
+      margin-top: var(--space-32);
+    }
+    .skill-card {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: var(--space-24);
+    }
+    .skill-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--accent-light);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-16);
+    }
+    .skill-icon svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; }
+    .skill-card h3 { font-size: 15px; font-weight: 500; margin-bottom: 6px; font-family: var(--font-body); }
+    .skill-card p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+
+    /* ── TOOLS SYSTEM ── */
+    .tools-system {
+      margin-top: var(--space-48);
+    }
+    .tools-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-16);
+      margin-top: var(--space-24);
+    }
+    .tool-block {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: var(--space-16) var(--space-24);
+      flex: 1;
+      min-width: 180px;
+    }
+    .tool-block .tool-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .tool-block .tool-use {
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+    .arrow-connector {
+      display: flex;
+      align-items: center;
+      color: var(--ink-soft);
+      font-size: 18px;
+      padding-top: var(--space-16);
+      flex-shrink: 0;
+    }
+
+    /* ── PORTFOLIO SAMPLES ── */
+    .samples-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-24);
+      margin-top: var(--space-32);
+    }
+    @media (max-width: 640px) {
+      .samples-grid { grid-template-columns: 1fr; }
+    }
+    .sample-card {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .sample-thumb {
+      background: var(--tag-bg);
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      position: relative;
+    }
+    .sample-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .sample-card:hover .sample-thumb img { transform: scale(1.03); }
+    .sample-thumb-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #EEF2F8 0%, #E4E2DC 100%);
+    }
+    .sample-thumb-placeholder svg { width: 48px; height: 48px; stroke: var(--ink-soft); fill: none; opacity: 0.5; }
+    .sample-body { padding: var(--space-24); }
+    .sample-body h3 { font-size: 17px; font-weight: 500; margin-bottom: 8px; font-family: var(--font-body); color: var(--ink); }
+    .sample-body p { font-size: 14px; color: var(--ink-soft); margin-bottom: var(--space-16); line-height: 1.6; }
+    .sample-actions { display: flex; gap: var(--space-8); flex-wrap: wrap; }
+    .btn-sample {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-light);
+      border: 1px solid #C8D8EE;
+      border-radius: 100px;
+      padding: 6px 16px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-sample:hover { background: #DDEAF8; }
+    .btn-view-modal {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-mid);
+      background: var(--tag-bg);
+      border: 1px solid var(--rule);
+      border-radius: 100px;
+      padding: 6px 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-view-modal:hover { background: #E4E2DC; }
+    .sample-disclaimer {
+      font-size: 12px;
+      color: var(--ink-soft);
+      margin-top: var(--space-8);
+      font-style: italic;
+    }
+
+    /* ── CASE STUDY ── */
+    #case-study { background: var(--white); }
+    .case-study-header {
+      margin-bottom: var(--space-48);
+    }
+    .case-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-24);
+      margin-top: var(--space-24);
+      padding-top: var(--space-24);
+      border-top: 1px solid var(--rule);
+    }
+    .meta-item { flex: 1; min-width: 140px; }
+    .meta-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px; }
+    .meta-value { font-size: 15px; font-weight: 500; color: var(--ink); }
+
+    .cs-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-48);
+    }
+    @media (max-width: 680px) { .cs-body { grid-template-columns: 1fr; } }
+
+    .cs-section h3 {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: var(--space-16);
+      font-family: var(--font-body);
+    }
+    .cs-section p { font-size: 15px; color: var(--ink-mid); margin-bottom: var(--space-16); }
+
+    .challenge-list, .outcome-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-8);
+    }
+    .challenge-list li, .outcome-list li {
+      font-size: 15px;
+      color: var(--ink-mid);
+      padding-left: var(--space-16);
+      position: relative;
+    }
+    .challenge-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--ink-soft);
+    }
+    .outcome-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 13px;
+      top: 3px;
+    }
+
+    .workflow-steps {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-16);
+      margin-top: var(--space-8);
+    }
+    .workflow-step {
+      background: var(--cream);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: var(--space-16) var(--space-24);
+    }
+    .workflow-step strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .workflow-step span {
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+
+    /* ── CONTACT ── */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-16);
+      margin-top: var(--space-32);
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-16);
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: var(--space-16) var(--space-24);
+      text-decoration: none;
+      transition: border-color 0.2s;
+      flex: 1;
+      min-width: 220px;
+    }
+    .contact-item:hover { border-color: var(--accent); }
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--ink);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon svg { width: 18px; height: 18px; stroke: white; fill: none; }
+    .contact-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin-bottom: 2px; }
+    .contact-value { font-size: 15px; font-weight: 500; color: var(--ink); }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-24);
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      position: relative;
+      max-width: 900px;
+      width: 100%;
+    }
+    .modal-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: white;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-img {
+      width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+    .modal-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .modal-prev { left: -20px; }
+    .modal-next { right: -20px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: var(--space-32) var(--space-24);
+      font-size: 14px;
+    }
+    footer span { color: rgba(255,255,255,0.9); font-family: var(--font-display); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { transition: none; opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">Ria Digital System</a>
+    <ul class="nav-links">
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#case-study">Case Study</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="nav-mobile-btn" id="mobile-menu-btn" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+  <div id="mobile-menu">
+    <a href="#skills">Skills</a>
+    <a href="#tools">Tools</a>
+    <a href="#work">Work</a>
+    <a href="#case-study">Case Study</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="section" style="padding-top: calc(56px + 20px);">
+    <div class="hero-grid">
+      <div class="hero-text reveal">
+        <p class="eyebrow">General Virtual Assistant</p>
+        <h1>Maria Amor<br>Iglesia</h1>
+        <p class="lead" style="margin-top: 16px;">
+          I keep operations running cleanly — organizing records, tracking leads, coordinating schedules, and maintaining the data systems that businesses rely on daily.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Get In Touch</a>
+          <a href="#work" class="btn-ghost">View Work Samples</a>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:0.1s">
+        <img
+          src="./images/me.png"
+          alt="Maria Amor Iglesia"
+          class="hero-photo"
+          onerror="this.style.display='none'"
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section reveal">
+    <p class="eyebrow">What I Do</p>
+    <h2>Skills & Services</h2>
+    <p style="margin-top: 12px; max-width: 560px; font-size: 16px;">
+      A single point of contact for the administrative and data work that keeps your operations accurate and on track.
+    </p>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Data Entry & Record Management</h3>
+        <p>Consolidating, cleaning, and maintaining organized records across spreadsheets and databases.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>CRM Updating & Lead Tracking</h3>
+        <p>Logging leads, updating pipeline status, and executing structured follow-up schedules.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Scheduling & Coordination</h3>
+        <p>Managing calendars, checking availability, preventing conflicts, and confirming class or meeting schedules.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Payment Tracking & Verification</h3>
+        <p>Logging installments, verifying receipts, monitoring balances, and sending reminders.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Workflow Organization</h3>
+        <p>Building consistent processes for filing, reporting, and daily task execution that reduce errors over time.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Communication & Follow-up</h3>
+        <p>Drafting and sending structured follow-up messages via email, SMS, or messaging tools on schedule.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="section reveal">
+    <p class="eyebrow">How I Work</p>
+    <h2>Tools & System</h2>
+    <p style="margin-top: 12px; max-width: 600px; font-size: 16px;">
+      Each tool plays a specific role. Together they form a simple, connected system for tracking leads, organizing records, and keeping operations running without gaps.
+    </p>
+
+    <div class="tools-system">
+      <!-- Row 1: Lead comes in -->
+      <p style="font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); margin-bottom: 12px;">Lead & Data Flow</p>
+      <div class="tools-row">
+        <div class="tool-block">
+          <div class="tool-name">Google Forms / Email</div>
+          <div class="tool-use">Lead capture — collecting inquiries from forms, emails, or referrals</div>
+        </div>
+        <div class="arrow-connector">→</div>
+        <div class="tool-block">
+          <div class="tool-name">Google Sheets / Excel</div>
+          <div class="tool-use">Primary database — storing and organizing all lead, student, and payment records</div>
+        </div>
+        <div class="arrow-connector">→</div>
+        <div class="tool-block">
+          <div class="tool-name">CRM (HubSpot / GHL)</div>
+          <div class="tool-use">Pipeline tracking — updating lead status and triggering follow-up actions</div>
+        </div>
+      </div>
+
+      <!-- Row 2: Ops layer -->
+      <p style="font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); margin: 24px 0 12px;">Operations Layer</p>
+      <div class="tools-row">
+        <div class="tool-block">
+          <div class="tool-name">Google Calendar</div>
+          <div class="tool-use">Scheduling — managing class schedules, checking conflicts, and confirming availability</div>
+        </div>
+        <div class="arrow-connector">+</div>
+        <div class="tool-block">
+          <div class="tool-name">Trello / ClickUp</div>
+          <div class="tool-use">Task tracking — keeping daily tasks visible and progress updated</div>
+        </div>
+        <div class="arrow-connector">+</div>
+        <div class="tool-block">
+          <div class="tool-name">Slack / Gmail / Outlook</div>
+          <div class="tool-use">Communication — following up with leads and coordinating with the team</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- WORK SAMPLES -->
+<section id="work">
+  <div class="section reveal">
+    <p class="eyebrow">Portfolio Samples</p>
+    <h2>Work Examples</h2>
+    <p style="margin-top: 12px; max-width: 540px; font-size: 16px;">
+      Real work done as part of administrative support for an IT training company.
+    </p>
+
+    <div class="samples-grid">
+
+      <!-- CRM Sample -->
+      <div class="sample-card">
+        <div class="sample-thumb">
+          <div class="sample-thumb-placeholder">
+             <img src="./images/cmrstyle.png" alt="CRM and Lead Tracker" onerror="this.parentElement.innerHTML='<div class=\'sample-thumb-placeholder\'><svg viewBox=\'0 0 24 24\' stroke-width=\'1.5\' style=\'width:48px;height:48px;stroke:#8A8A96;fill:none;opacity:.5\'><path d=\'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/></svg></div>'">
+            <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M3 10h18M3 14h18M10 3v18M14 3v18M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="sample-body">
+          <h3>CRM & Lead Tracker — Google Sheets</h3>
+          <p>A structured tracking sheet with lead status pipeline, follow-up schedule, course interest, and payment columns — built to reduce missed leads and keep operations organized.</p>
+          <div class="tag-group" style="margin-bottom: 16px;">
+            <span class="tag">Google Sheets</span>
+            <span class="tag">CRM Logic</span>
+            <span class="tag">Lead Tracking</span>
+          </div>
+          <div class="sample-actions">
+            <a
+              href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTQIwKZbvER4rsTfgjWkgzekah_LbdbKnxjmAlVFaMa--9vBZa-XM9jXlldMZyA2w/pubhtml"
+              target="_blank"
+              class="btn-sample"
+            >View Google Sheet ↗</a>
+          </div>
+          <p class="sample-disclaimer">*Sample data only. No real client information included.*</p>
+        </div>
+      </div>
+
+      <!-- Calendar Sample -->
+      <div class="sample-card">
+        <div class="sample-thumb" style="cursor:pointer;" onclick="openModal(0)">
+          <img src="./images/calendar.png" alt="Training Calendar Sample" onerror="this.parentElement.innerHTML='<div class=\'sample-thumb-placeholder\'><svg viewBox=\'0 0 24 24\' stroke-width=\'1.5\' style=\'width:48px;height:48px;stroke:#8A8A96;fill:none;opacity:.5\'><path d=\'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/></svg></div>'">
+        </div>
+        <div class="sample-body">
+          <h3>Training Schedule — Google Calendar</h3>
+          <p>Real training calendars managed for CCNA, Cloud, and Cybersecurity bootcamp batches — including multi-day sessions, holiday checks, and instructor availability coordination.</p>
+          <div class="tag-group" style="margin-bottom: 16px;">
+            <span class="tag">Google Calendar</span>
+            <span class="tag">Scheduling</span>
+            <span class="tag">Conflict Management</span>
+          </div>
+          <div class="sample-actions">
+            <button class="btn-view-modal" onclick="openModal(0)">View Screenshots</button>
+          </div>
+          <p class="sample-disclaimer">*Real calendar used for demonstration. No personal data included.*</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CASE STUDY -->
+<section id="case-study" style="background: var(--white);">
+  <div class="section reveal">
+    <p class="eyebrow">Case Study</p>
+    <h2>Operational Organization & CRM Support</h2>
+
+    <div class="case-meta">
+      <div class="meta-item">
+        <div class="meta-label">Company</div>
+        <div class="meta-value">NexusCloud IT Solutions Inc.</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Industry</div>
+        <div class="meta-value">IT Training — CCNA, Cloud, Cybersecurity</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Role</div>
+        <div class="meta-value">General Virtual Assistant</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Focus</div>
+        <div class="meta-value">Operations, Data Management, CRM</div>
+      </div>
+    </div>
+
+    <div class="cs-body" style="margin-top: 48px;">
+
+      <div>
+        <div class="cs-section">
+          <h3>Objective</h3>
+          <p>Support daily operations by organizing scattered Excel-based records, improving lead tracking, maintaining accurate student and payment data, and ensuring consistent administrative workflows.</p>
+        </div>
+
+        <div class="cs-section" style="margin-top: 32px;">
+          <h3>Business Challenge</h3>
+          <p>The company relied on manual Excel sheets and fragmented communication tools. This caused:</p>
+          <ul class="challenge-list" style="margin-top: 8px;">
+            <li>Disorganized student and lead records</li>
+            <li>Missed and inconsistent follow-ups</li>
+            <li>Scheduling conflicts between students and instructors</li>
+            <li>Unclear tracking of partial payments and balances</li>
+          </ul>
+        </div>
+
+        <div class="cs-section" style="margin-top: 32px;">
+          <h3>Outcomes</h3>
+          <ul class="outcome-list">
+            <li>Organized and centralized all operational records</li>
+            <li>More consistent lead follow-up process</li>
+            <li>Reduced scheduling conflicts through structured tracking</li>
+            <li>Improved visibility of payment status and balances</li>
+            <li>Clearer student and lead lifecycle tracking</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <div class="cs-section">
+          <h3>Key Workflows</h3>
+          <div class="workflow-steps">
+            <div class="workflow-step">
+              <strong>1 — Data Organization</strong>
+              <span>Consolidated multiple Excel files, cleaned duplicates, standardized formatting across students, leads, courses, and payments.</span>
+            </div>
+            <div class="workflow-step">
+              <strong>2 — Lead Tracking & Follow-up</strong>
+              <span>Logged Facebook and referral leads. Executed Day 1 → Day 3–5 → Day 7 follow-up schedule via SMS, email, and call.</span>
+            </div>
+            <div class="workflow-step">
+              <strong>3 — Scheduling Coordination</strong>
+              <span>Managed enrollment schedules, coordinated instructor availability, and prevented conflicts before confirming classes.</span>
+            </div>
+            <div class="workflow-step">
+              <strong>4 — Payment Tracking</strong>
+              <span>Maintained accounts receivable sheet. Logged installments, verified receipts, updated overdue balances, and sent reminders.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-section" style="margin-top: 32px;">
+          <h3>Tools Used</h3>
+          <div class="tag-group">
+            <span class="tag">Microsoft Excel</span>
+            <span class="tag">Google Sheets</span>
+            <span class="tag">CRM System</span>
+            <span class="tag">Gmail / Outlook</span>
+            <span class="tag">Google Calendar</span>
+            <span class="tag">SMS Tools</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top: 48px; padding: 24px; background: var(--accent-light); border: 1px solid #C8D8EE; border-radius: 12px;">
+      <p style="font-size: 15px; color: var(--ink-mid); max-width: 680px;">
+        <strong style="color: var(--accent);">Value delivered:</strong> Clean data, structured workflows, and consistent follow-ups — allowing the business to reduce administrative errors and improve operational reliability without adding more headcount.
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section reveal">
+    <p class="eyebrow">Let's Work Together</p>
+    <h2>Get In Touch</h2>
+    <p style="margin-top: 12px; font-size: 16px; max-width: 480px;">
+      Remote-ready. Quick to respond. Flexible hours to match your timezone.
+    </p>
+    <div class="contact-row">
+      <a href="tel:+639943588304" class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-value">+63 994 358 8304</div>
+        </div>
+      </a>
+      <a href="mailto:iglesia.ria@gmail.com" class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">iglesia.ria@gmail.com</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>Ria Digital System</span> &nbsp;·&nbsp; © 2026 All rights reserved.
+</footer>
+
+<!-- CALENDAR MODAL -->
+<div class="modal-overlay" id="calModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <button class="modal-nav modal-prev" onclick="prevImg()">‹</button>
+    <img id="modalImg" src="" alt="Calendar preview" class="modal-img">
+    <button class="modal-nav modal-next" onclick="nextImg()">›</button>
+  </div>
+</div>
+
+<script>
+  // Mobile nav
+  document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  });
+  document.querySelectorAll('#mobile-menu a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open'));
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Modal
+  const calImages = ['./images/calendar.png', './images/calendar2.png', './images/calendar3.png'];
+  let ci = 0;
+  function openModal(i) {
+    ci = i;
+    document.getElementById('modalImg').src = calImages[ci];
+    document.getElementById('calModal').classList.add('open');
+  }
+  function closeModal() { document.getElementById('calModal').classList.remove('open'); }
+  function nextImg() { ci = (ci + 1) % calImages.length; document.getElementById('modalImg').src = calImages[ci]; }
+  function prevImg() { ci = (ci - 1 + calImages.length) % calImages.length; document.getElementById('modalImg').src = calImages[ci]; }
+  document.getElementById('calModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+
+</body>
+</html>
