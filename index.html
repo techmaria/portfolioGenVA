@@ -771,6 +771,51 @@
         </div>
       </div>
 
+      <!-- Data Entry Sample -->
+      <div class="sample-card">
+        <div class="sample-thumb" style="cursor:pointer;" onclick="openDataEntryModal(0)">
+          <img src="./images/data entry.png" alt="Data Entry & Business Documents Sample" onerror="this.parentElement.innerHTML='<div class=\'sample-thumb-placeholder\'><svg viewBox=\'0 0 24 24\' stroke-width=\'1.5\' style=\'width:48px;height:48px;stroke:#8A8A96;fill:none;opacity:.5\'><path d=\'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/></svg></div>'">
+        </div>
+        <div class="sample-body">
+          <h3>Data Entry — Business Documents & Transactions</h3>
+          <p>Accurate preparation and encoding of formal business documents. </p>
+          <div class="tag-group" style="margin-bottom: 16px;">
+            <span class="tag">Secretary's Certificate</span>
+            <span class="tag">Board Resolutions</span>
+            <span class="tag">Business Transactions</span>
+            <span class="tag">Document Filing</span>
+            <span class="tag">MS Word / Google Docs</span>
+          </div>
+          <div class="sample-actions">
+            <button class="btn-view-modal" onclick="openDataEntryModal(0)">View Screenshots</button>
+          </div>
+          <p class="sample-disclaimer">*Sample documents only. All identifying information has been replaced with placeholder data.*</p>
+        </div>
+      </div>
+
+      <!-- Email Management Sample -->
+      <div class="sample-card">
+        <div class="sample-thumb" style="cursor:pointer;" onclick="openEmailModal(0)">
+          <img src="./images/email .png" alt="Email Management Sample" onerror="this.parentElement.innerHTML='<div class=\'sample-thumb-placeholder\'><svg viewBox=\'0 0 24 24\' stroke-width=\'1.5\' style=\'width:48px;height:48px;stroke:#8A8A96;fill:none;opacity:.5\'><path d=\'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/></svg></div>'">
+        </div>
+        <div class="sample-body">
+          <h3>Email Management — Inbox Organization & Response System</h3>
+          <p>A clean, structured inbox system built so that nothing slips through, sorting incoming messages by priority and category, drafting and sending replies, flagging action items, and maintaining a zero-clutter inbox using folder rules and labels.</p>
+          <div class="tag-group" style="margin-bottom: 16px;">
+            <span class="tag">Gmail</span>
+            <span class="tag">Outlook</span>
+            <span class="tag">Inbox Zero Method</span>
+            <span class="tag">Email Drafting</span>
+            <span class="tag">Template Management</span>
+            <span class="tag">Follow-up Tracking</span>
+          </div>
+          <div class="sample-actions">
+            <button class="btn-view-modal" onclick="openEmailModal(0)">View Screenshots</button>
+          </div>
+          <p class="sample-disclaimer">*Screenshots show folder structure and workflow only. No real client emails are displayed.*</p>
+        </div>
+      </div>
+
       <!-- Calendar Sample -->
       <div class="sample-card">
         <div class="sample-thumb" style="cursor:pointer;" onclick="openModal(0)">
@@ -937,6 +982,26 @@
   <span>Ria Digital System</span> &nbsp;·&nbsp; © 2026 All rights reserved.
 </footer>
 
+<!-- DATA ENTRY MODAL -->
+<div class="modal-overlay" id="dataEntryModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeDataEntryModal()">✕</button>
+    <button class="modal-nav modal-prev" onclick="prevDataEntryImg()">‹</button>
+    <img id="dataEntryModalImg" src="" alt="Data entry document preview" class="modal-img">
+    <button class="modal-nav modal-next" onclick="nextDataEntryImg()">›</button>
+  </div>
+</div>
+
+<!-- EMAIL MODAL -->
+<div class="modal-overlay" id="emailModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeEmailModal()">✕</button>
+    <button class="modal-nav modal-prev" onclick="prevEmailImg()">‹</button>
+    <img id="emailModalImg" src="" alt="Email management preview" class="modal-img">
+    <button class="modal-nav modal-next" onclick="nextEmailImg()">›</button>
+  </div>
+</div>
+
 <!-- CALENDAR MODAL -->
 <div class="modal-overlay" id="calModal">
   <div class="modal-box">
@@ -964,7 +1029,45 @@
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Modal
+  // Data Entry Modal
+  const dataEntryImages = [
+    './images/data-entry-1.png',
+    './images/data-entry-2.png',
+    './images/data-entry-3.png'
+  ];
+  let dei = 0;
+  function openDataEntryModal(i) {
+    dei = i;
+    document.getElementById('dataEntryModalImg').src = dataEntryImages[dei];
+    document.getElementById('dataEntryModal').classList.add('open');
+  }
+  function closeDataEntryModal() { document.getElementById('dataEntryModal').classList.remove('open'); }
+  function nextDataEntryImg() { dei = (dei + 1) % dataEntryImages.length; document.getElementById('dataEntryModalImg').src = dataEntryImages[dei]; }
+  function prevDataEntryImg() { dei = (dei - 1 + dataEntryImages.length) % dataEntryImages.length; document.getElementById('dataEntryModalImg').src = dataEntryImages[dei]; }
+  document.getElementById('dataEntryModal').addEventListener('click', function(e) {
+    if (e.target === this) closeDataEntryModal();
+  });
+
+  // Email Modal
+  const emailImages = [
+    './images/email-management-1.png',
+    './images/email-management-2.png',
+    './images/email-management-3.png'
+  ];
+  let emi = 0;
+  function openEmailModal(i) {
+    emi = i;
+    document.getElementById('emailModalImg').src = emailImages[emi];
+    document.getElementById('emailModal').classList.add('open');
+  }
+  function closeEmailModal() { document.getElementById('emailModal').classList.remove('open'); }
+  function nextEmailImg() { emi = (emi + 1) % emailImages.length; document.getElementById('emailModalImg').src = emailImages[emi]; }
+  function prevEmailImg() { emi = (emi - 1 + emailImages.length) % emailImages.length; document.getElementById('emailModalImg').src = emailImages[emi]; }
+  document.getElementById('emailModal').addEventListener('click', function(e) {
+    if (e.target === this) closeEmailModal();
+  });
+
+  // Calendar Modal
   const calImages = ['./images/calendar.png', './images/calendar2.png', './images/calendar3.png'];
   let ci = 0;
   function openModal(i) {
@@ -978,7 +1081,7 @@
   document.getElementById('calModal').addEventListener('click', function(e) {
     if (e.target === this) closeModal();
   });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeDataEntryModal(); closeEmailModal(); } });
 </script>
 
 </body>
