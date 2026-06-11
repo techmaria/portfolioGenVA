@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maria Amor Iglesia | General Virtual Assistant</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">Ria Digital System</a>
+    <ul class="nav-links">
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#case-study">Case Study</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="nav-mobile-btn" id="mobile-menu-btn" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+  <div id="mobile-menu">
+    <a href="#skills">Skills</a>
+    <a href="#tools">Tools</a>
+    <a href="#work">Work</a>
+    <a href="#case-study">Case Study</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="section" style="padding-top: calc(56px + 20px);">
+    <div class="hero-grid">
+      <div class="hero-text reveal">
+        <p class="eyebrow">General Virtual Assistant</p>
+        <h1>Maria Amor<br>Iglesia</h1>
+        <p class="lead" style="margin-top: 16px;">
+          I keep operations running cleanly, organizing records, tracking leads, coordinating schedules, and maintaining the data systems that businesses rely on daily.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Get In Touch</a>
+          <a href="#work" class="btn-ghost">View Work Samples</a>
+        </div>
+      </div>
+      <div class="reveal hero-image-container" style="transition-delay:0.1s">
+          <img
+            src="./images/7.png"
+            alt="Maria Amor Iglesia"
+            class="hero-photo"
+            onerror="this.style.display='none'"
+          >
+      
+      </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- WORK SAMPLES -->
+<section id="work">
+  <div class="section reveal">
+    <p class="eyebrow">Portfolio Samples</p>
+    <h2>Work Examples</h2>
+    <p style="margin-top: 12px; max-width: 540px; font-size: 16px;">
+      Real work done as part of administrative support for an IT training company.
+    </p>
+
+    <div class="samples-grid">
+
+      <!-- CRM Sample -->
+      <div class="sample-card">
+        <div class="sample-thumb">
+          <div class="sample-thumb-placeholder">
+            <a
+              href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTQIwKZbvER4rsTfgjWkgzekah_LbdbKnxjmAlVFaMa--9vBZa-XM9jXlldMZyA2w/pubhtml"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="./images/cmrstyle.png" alt="CRM and Lead Tracker">
+            </a>
+          </div>
+        </div>
+        
+        <div class="sample-body">
+          <h3>CRM & Lead Tracker — Google Sheets</h3>
+          <p>A structured tracking sheet with lead status pipeline, follow-up schedule, course interest, and payment columns — built to reduce missed leads and keep operations organized.</p>
+          <div class="tag-group" style="margin-bottom: 16px;">
+            <span class="tag">Google Sheets</span>
+            <span class="tag">CRM Logic</span>
+            <span class="tag">Lead Tracking</span>
+          </div>
+          <div class="sample-actions">
+            <a
+              href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTQIwKZbvER4rsTfgjWkgzekah_LbdbKnxjmAlVFaMa--9vBZa-XM9jXlldMZyA2w/pubhtml"
+              target="_blank"
+              class="btn-sample"
+            > View Google Sheet </a>
+          </div>
+          <p class="sample-disclaimer">*Sample data only. No real client information included.*</p>
+        </div>
+      </div>
+
+      <!-- Data Entry Sample -->
+      <div class="sample-card">
+        <div class="sample-thumb" style="cursor:pointer;" onclick="openDataEntryModal(0)">
+          <img src="./images/dataentry.png" alt="Data Entry & Business Documents Sample" onerror="this.parentElement.innerHTML='<div class=\'sample-thumb-placeholder\'><svg viewBox=\'0 0 24 24\' stroke-width=\'1.5\' style=\'width:48px;height:48px;stroke:#8A8A96;fill:none;opacity:.5\'><path d=\'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/></svg></div>'">
+        </div>
+        <div class="sample-body">
+          <h3>Data Entry — Business Documents & Transactions</h3>
+          <p>Accurate preparation and encoding of formal business documents. </p>
+          <div class="tag-group" style="margin-bottom: 16px;">
+            <span class="tag">Secretary's Certificate</span>
+            <span class="tag">Board Resolutions</span>
+            <span class="tag">Business Transactions</span>
+            <span class="tag">Document Filing</span>
+            <span class="tag">MS Word / Google Docs</span>
+          </div>
+          <div class="sample-actions">
+            <button class="btn-view-modal" onclick="openDataEntryModal(0)">View Screenshots</button>
+          </div>
+          <p class="sample-disclaimer">*Sample documents only. All identifying information has been replaced with placeholder data.*</p>
+        </div>
+      </div>
+
+      <!-- Email Management Sample -->
+      <div class="sample-card">
+        <div class="sample-thumb" style="cursor:pointer;" onclick="openEmailModal(0)">
+          <img src="./images/email1.png" alt="Email Management Sample" onerror="this.parentElement.innerHTML='<div class=\'sample-thumb-placeholder\'><svg viewBox=\'0 0 24 24\' stroke-width=\'1.5\' style=\'width:48px;height:48px;stroke:#8A8A96;fill:none;opacity:.5\'><path d=\'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/></svg></div>'">
+        </div>
+        <div class="sample-body">
+          <h3>Email Management — Inbox Organization & Response System</h3>
+          <p>A clean, structured inbox system built so that nothing slips through, sorting incoming messages by priority and category, drafting and sending replies, flagging action items, and maintaining a zero-clutter inbox using folder rules and labels.</p>
+          <div class="tag-group" style="margin-bottom: 16px;">
+            <span class="tag">Gmail</span>
+            <span class="tag">Outlook</span>
+            <span class="tag">Inbox Zero Method</span>
+            <span class="tag">Email Drafting</span>
+            <span class="tag">Template Management</span>
+            <span class="tag">Follow-up Tracking</span>
+          </div>
+          <div class="sample-actions">
+            <button class="btn-view-modal" onclick="openEmailModal(0)">View Screenshots</button>
+          </div>
+          <p class="sample-disclaimer">*Screenshots show folder structure and workflow only. No real client emails are displayed.*</p>
+        </div>
+      </div>
+
+      <!-- Calendar Sample -->
+      <div class="sample-card">
+        <div class="sample-thumb" style="cursor:pointer;" onclick="openModal(0)">
+          <img src="./images/calendar.png" alt="Training Calendar Sample" onerror="this.parentElement.innerHTML='<div class=\'sample-thumb-placeholder\'><svg viewBox=\'0 0 24 24\' stroke-width=\'1.5\' style=\'width:48px;height:48px;stroke:#8A8A96;fill:none;opacity:.5\'><path d=\'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/></svg></div>'">
+        </div>
+        <div class="sample-body">
+          <h3>Training Schedule — Google Calendar</h3>
+          <p>Real training calendars managed for CCNA, Cloud, and Cybersecurity bootcamp batches — including multi-day sessions, holiday checks, and instructor availability coordination.</p>
+          <div class="tag-group" style="margin-bottom: 16px;">
+            <span class="tag">Google Calendar</span>
+            <span class="tag">Scheduling</span>
+            <span class="tag">Conflict Management</span>
+          </div>
+          <div class="sample-actions">
+            <button class="btn-view-modal" onclick="openModal(0)">View Screenshots</button>
+          </div>
+          <p class="sample-disclaimer">*Real calendar used for demonstration. No personal data included.*</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CASE STUDY -->
+<section id="case-study" style="background: var(--white);">
+  <div class="section reveal">
+    <p class="eyebrow">Case Study</p>
+    <h2>Operational Organization & CRM Support</h2>
+
+    <div class="case-meta">
+      <div class="meta-item">
+        <div class="meta-label">Company</div>
+        <div class="meta-value">NexusCloud IT Solutions Inc.</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Industry</div>
+        <div class="meta-value">IT Training — CCNA, Cloud, Cybersecurity</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Role</div>
+        <div class="meta-value">General Virtual Assistant</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Focus</div>
+        <div class="meta-value">Operations, Data Management, CRM</div>
+      </div>
+    </div>
+
+    <div class="cs-body" style="margin-top: 48px;">
+
+      <div>
+        <div class="cs-section">
+          <h3>Objective</h3>
+          <p>Support daily operations by organizing scattered Excel-based records, improving lead tracking, maintaining accurate student and payment data, and ensuring consistent administrative workflows.</p>
+        </div>
+
+        <div class="cs-section" style="margin-top: 32px;">
+          <h3>Business Challenge</h3>
+          <p>The company relied on manual Excel sheets and fragmented communication tools. This caused:</p>
+          <ul class="challenge-list" style="margin-top: 8px;">
+            <li>Disorganized student and lead records</li>
+            <li>Missed and inconsistent follow-ups</li>
+            <li>Scheduling conflicts between students and instructors</li>
+            <li>Unclear tracking of partial payments and balances</li>
+          </ul>
+        </div>
+
+        <div class="cs-section" style="margin-top: 32px;">
+          <h3>Outcomes</h3>
+          <ul class="outcome-list">
+            <li>Organized and centralized all operational records</li>
+            <li>More consistent lead follow-up process</li>
+            <li>Reduced scheduling conflicts through structured tracking</li>
+            <li>Improved visibility of payment status and balances</li>
+            <li>Clearer student and lead lifecycle tracking</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <div class="cs-section">
+          <h3>Key Workflows</h3>
+          <div class="workflow-steps">
+            <div class="workflow-step">
+              <strong>1 — Data Organization</strong>
+              <span>Consolidated multiple Excel files, cleaned duplicates, standardized formatting across students, leads, courses, and payments.</span>
+            </div>
+            <div class="workflow-step">
+              <strong>2 — Lead Tracking & Follow-up</strong>
+              <span>Logged Facebook and referral leads. Executed Day 1 → Day 3–5 → Day 7 follow-up schedule via SMS, email, and call.</span>
+            </div>
+            <div class="workflow-step">
+              <strong>3 — Scheduling Coordination</strong>
+              <span>Managed enrollment schedules, coordinated instructor availability, and prevented conflicts before confirming classes.</span>
+            </div>
+            <div class="workflow-step">
+              <strong>4 — Payment Tracking</strong>
+              <span>Maintained accounts receivable sheet. Logged installments, verified receipts, updated overdue balances, and sent reminders.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-section" style="margin-top: 32px;">
+          <h3>Tools Used</h3>
+          <div class="tag-group">
+            <span class="tag">Microsoft Excel</span>
+            <span class="tag">Google Sheets</span>
+            <span class="tag">CRM System</span>
+            <span class="tag">Gmail / Outlook</span>
+            <span class="tag">Google Calendar</span>
+            <span class="tag">SMS Tools</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top: 48px; padding: 24px; background: var(--accent-light); border: 1px solid #C8D8EE; border-radius: 12px;">
+      <p style="font-size: 15px; color: var(--ink-mid); max-width: 680px;">
+        <strong style="color: var(--accent);">Value delivered:</strong> Clean data, structured workflows, and consistent follow-ups — allowing the business to reduce administrative errors and improve operational reliability without adding more headcount.
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section reveal">
+    <p class="eyebrow">What I Do</p>
+    <h2>Skills & Services</h2>
+    <p style="margin-top: 12px; max-width: 560px; font-size: 16px;">
+      A single point of contact for the administrative and data work that keeps your operations accurate and on track.
+    </p>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Data Entry & Record Management</h3>
+        <p>Consolidating, cleaning, and maintaining organized records across spreadsheets and databases.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>CRM Updating & Lead Tracking</h3>
+        <p>Logging leads, updating pipeline status, and executing structured follow-up schedules.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Scheduling & Coordination</h3>
+        <p>Managing calendars, checking availability, preventing conflicts, and confirming class or meeting schedules.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Payment Tracking & Verification</h3>
+        <p>Logging installments, verifying receipts, monitoring balances, and sending reminders.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Workflow Organization</h3>
+        <p>Building consistent processes for filing, reporting, and daily task execution that reduce errors over time.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Communication & Follow-up</h3>
+        <p>Drafting and sending structured follow-up messages via email, SMS, or messaging tools on schedule.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="section reveal">
+    <p class="eyebrow">How I Work</p>
+    <h2>Tools & System</h2>
+    <p style="margin-top: 12px; max-width: 600px; font-size: 16px;">
+      Each tool plays a specific role. Together they form a simple, connected system for tracking leads, organizing records, and keeping operations running without gaps.
+    </p>
+
+    <div class="tools-system">
+      <!-- Row 1: Lead comes in -->
+      <p style="font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); margin-bottom: 12px;">Lead & Data Flow</p>
+      <div class="tools-row">
+        <div class="tool-block">
+          <div class="tool-name">Google Forms / Email</div>
+          <div class="tool-use">Lead capture — collecting inquiries from forms, emails, or referrals</div>
+        </div>
+        <div class="arrow-connector">→</div>
+        <div class="tool-block">
+          <div class="tool-name">Google Sheets / Excel</div>
+          <div class="tool-use">Primary database — storing and organizing all lead, student, and payment records</div>
+        </div>
+        <div class="arrow-connector">→</div>
+        <div class="tool-block">
+          <div class="tool-name">CRM (HubSpot / GHL)</div>
+          <div class="tool-use">Pipeline tracking — updating lead status and triggering follow-up actions</div>
+        </div>
+      </div>
+
+      <!-- Row 2: Ops layer -->
+      <p style="font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); margin: 24px 0 12px;">Operations Layer</p>
+      <div class="tools-row">
+        <div class="tool-block">
+          <div class="tool-name">Google Calendar</div>
+          <div class="tool-use">Scheduling — managing class schedules, checking conflicts, and confirming availability</div>
+        </div>
+        <div class="arrow-connector">+</div>
+        <div class="tool-block">
+          <div class="tool-name">Trello / ClickUp</div>
+          <div class="tool-use">Task tracking — keeping daily tasks visible and progress updated</div>
+        </div>
+        <div class="arrow-connector">+</div>
+        <div class="tool-block">
+          <div class="tool-name">Slack / Gmail / Outlook</div>
+          <div class="tool-use">Communication — following up with leads and coordinating with the team</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section reveal">
+    <p class="eyebrow">Let's Work Together</p>
+    <h2>Get In Touch</h2>
+    <p style="margin-top: 12px; font-size: 16px; max-width: 480px;">
+      Remote-ready. Quick to respond. Flexible hours to match your timezone.
+    </p>
+    <div class="contact-row">
+      <a href="tel:+639943588304" class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-value">+63 994 358 8304</div>
+        </div>
+      </a>
+      <a href="mailto:iglesia.ria@gmail.com" class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">iglesia.ria@gmail.com</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>Ria Digital System</span> &nbsp;·&nbsp; © 2026 All rights reserved.
+</footer>
+
+<!-- DATA ENTRY MODAL -->
+<div class="modal-overlay" id="dataEntryModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeDataEntryModal()">✕</button>
+    <button class="modal-nav modal-prev" onclick="prevDataEntryImg()">‹</button>
+    <img id="dataEntryModalImg" src="" alt="Data entry document preview" class="modal-img">
+    <button class="modal-nav modal-next" onclick="nextDataEntryImg()">›</button>
+  </div>
+</div>
+
+<!-- EMAIL MODAL -->
+<div class="modal-overlay" id="emailModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeEmailModal()">✕</button>
+    <button class="modal-nav modal-prev" onclick="prevEmailImg()">‹</button>
+    <img id="emailModalImg" src="" alt="Email management preview" class="modal-img">
+    <button class="modal-nav modal-next" onclick="nextEmailImg()">›</button>
+  </div>
+</div>
+
+<!-- CALENDAR MODAL -->
+<div class="modal-overlay" id="calModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <button class="modal-nav modal-prev" onclick="prevImg()">‹</button>
+    <img id="modalImg" src="" alt="Calendar preview" class="modal-img">
+    <button class="modal-nav modal-next" onclick="nextImg()">›</button>
+  </div>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
